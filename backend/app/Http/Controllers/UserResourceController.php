@@ -10,9 +10,36 @@ class UserResourceController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        return ['test'];
+        $collection = User::query();
+
+        $allowedFilterFields = (new User())->getFillable();
+        $allowedSortFields = ['id', ...$allowedFilterFields];
+        $allowedSortDirections = ['asc', 'desc'];
+        $sortBy = $request->query('sortby', 'id');
+        $sortDir = strtolower($request->query('sortdir', 'asc'));
+        if (!in_array($sortBy, $allowedSortFields)) $sortBy = $allowedSortFields[0];
+        if (!in_array($sortDir, $allowedSortDirections)) $sortBy = $allowedSortDirections[0];
+        $collection->orderBy($sortBy, $sortDir);
+
+        foreach ($allowedFilterFields as $key) {
+            if ($paramFilter = $request->query('_' .$key)){
+                $paramFilter = preg_replace( "#([(%_?+])#", "\\$1", $paramFilter);
+                $collection->where($key, 'LIKE', '%' .$paramFilter.'%');
+            }
+        }
+        $limit = intval($request->query('limit', 20));
+        $limit = min($limit, 20);
+        $collection->limit($limit);
+
+        $offset = intval($request->query('offset', 0));
+        $offset = max($offset, 0);
+        $collection->offset($offset);
+
+
+        return $collection->get();
+
     }
 
     /**
