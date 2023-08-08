@@ -18,11 +18,11 @@ class UserFactory extends Factory
     public function definition(): array
     {
         return [
-            'avatar' => '/assets/avatars/avatar-' .rand(1,7). '.jpg',
+            'avatar' => '/assets/avatars/avatar-'.rand(1,7).'.jpg',
             'name' => fake()->name(),
             'email' => fake()->unique()->safeEmail(),
-            'firstname' => fake()->firstname(),
-            'lastname' => fake()->lastname(),
+            'firstname' => fake()->firstName(),
+            'lastname' => fake()->lastName(),
             'company' => fake()->company(),
             'position' => fake()->word(),
             'email_verified_at' => now(),

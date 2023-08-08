@@ -543,7 +543,7 @@
         </div>
     </div>
     <footer class="footer">
-        <div class="footer__copyright">©2023-2023 Company Name
+        <div class="footer__copyright">©2019-2022 Company Name
         </div>
         <div class="footer__items-group">
             <div class="footer__item"><a class="footer__link" href="#">Ссылка</a>

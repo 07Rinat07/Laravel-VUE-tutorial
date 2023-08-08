@@ -1,5 +1,5 @@
 {
-  "name": "frontend",
+  "name": "laravel-vue-tutorial-frontend",
   "version": "0.0.0",
   "private": true,
   "scripts": {
@@ -9,12 +9,12 @@
   },
   "dependencies": {
     "svg4everybody": "^2.1.9",
-    "vue": "^3.3.4"
+    "vue": "^3.3.2"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.2.3",
-    "sass": "^1.64.2",
-    "vite": "^4.4.6",
+    "sass": "^1.62.1",
+    "vite": "^4.3.5",
     "vite-plugin-sass-glob-import": "^2.0.0"
   }
 }
