@@ -18,6 +18,7 @@ class UserFactory extends Factory
     public function definition(): array
     {
         return [
+            'avatar' => '/assets/avatars/avatar-' .rand(1,7). '.jpg',
             'name' => fake()->name(),
             'email' => fake()->unique()->safeEmail(),
             'firstname' => fake()->firstname(),
